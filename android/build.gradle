@@ -1,0 +1,60 @@
+group 'com.pigeon.pig_alioss'
+version '1.0'
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+        mavenCentral()
+        maven {
+            allowInsecureProtocol = true
+            url "http://123.57.93.112:8081/repository/maven-pigeon/"
+        }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        jcenter()
+        google()
+        mavenCentral()
+        maven {
+            allowInsecureProtocol = true
+            url "http://123.57.93.112:8081/repository/maven-pigeon/"
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 31
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:design:25.3.1'
+    implementation 'com.google.code.gson:gson:2.8.1'
+//    compile 'com.aliyun.dpa:oss-android-sdk:+'
+    implementation project(':oss-android-sdk')
+    //本地照片库
+    implementation 'com.library.tangxiaolv:telegramgallery:1.0.3'
+    //material dialog
+    implementation 'com.afollestad.material-dialogs:core:0.9.4.4'
+    implementation 'com.pigeon.utils:zhouliqiang:1.0.0@aar'
+}
